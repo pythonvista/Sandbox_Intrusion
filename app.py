@@ -51,7 +51,7 @@ def predict_banknote(data:SystemLogs):
     }
 
 @app.post('/predict_malware')
-def predict_malware(file: UploadFile):
+async def predict_malware(file: UploadFile):
      with open(file.filename, "wb") as f:
         f.write(file.file.read())
    # print(classifier.predict([[variance,skewness,curtosis,entropy]]))
