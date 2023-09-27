@@ -7,7 +7,7 @@ Created on Tue Nov 17 21:40:41 2020
 
 # 1. Library imports
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from SystemLogs import SystemLogs
 import numpy as np
 import pickle
@@ -16,6 +16,9 @@ import pandas as pd
 app = FastAPI()
 pickle_in = open("classifier.pkl","rb")
 classifier=pickle.load(pickle_in)
+
+pickle_in2 = open("classifier.pkl","rb")
+model_ware = pickle.load(pickle_in2)
 
 # 3. Index route, opens automatically on http://127.0.0.1:8000
 @app.get('/')
@@ -46,6 +49,18 @@ def predict_banknote(data:SystemLogs):
     return {
         'prediction': prediction
     }
+
+@app.post('/predict_malware')
+def predict_malware(file: UploadFile):
+     with open(file.filename, "wb") as f:
+        f.write(file.file.read())
+   # print(classifier.predict([[variance,skewness,curtosis,entropy]]))
+     = pd.read_csv(file.filename + '.csv')
+    prediction = model_ware.predict(new_log_data)
+    return {
+        'prediction': prediction
+    }
+
 
 # 5. Run the API with uvicorn
 #    Will run on http://127.0.0.1:8000
