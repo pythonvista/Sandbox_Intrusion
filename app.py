@@ -52,10 +52,11 @@ def predict_banknote(data:SystemLogs):
 
 @app.post('/predict_malware')
 async def predict_malware(file: UploadFile):
-     with open(file.filename, "wb") as f:
+    with open(file.filename, "wb") as f:
         f.write(file.file.read())
-   # print(classifier.predict([[variance,skewness,curtosis,entropy]]))
-    new_log_data = pd.read_csv(file.filename + '.csv')
+
+    # print(classifier.predict([[variance,skewness,curtosis,entropy]]))
+    new_log_data = pd.read_csv(file.filename)
     prediction = model_ware.predict(new_log_data)
     return {
         'prediction': prediction
