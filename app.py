@@ -55,7 +55,7 @@ async def predict_malware(file: UploadFile):
      with open(file.filename, "wb") as f:
         f.write(file.file.read())
    # print(classifier.predict([[variance,skewness,curtosis,entropy]]))
-     = pd.read_csv(file.filename + '.csv')
+    new_log_data = pd.read_csv(file.filename + '.csv')
     prediction = model_ware.predict(new_log_data)
     return {
         'prediction': prediction
