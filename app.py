@@ -12,13 +12,13 @@ from SystemLogs import SystemLogs
 import numpy as np
 import pickle
 import pandas as pd
+import joblib
 # 2. Create the app object
 app = FastAPI()
 pickle_in = open("classifier.pkl","rb")
 classifier=pickle.load(pickle_in)
 
-pickle_in2 = open("random_forest_model.pkl","rb")
-model_ware = pickle.load(pickle_in2)
+model_ware = joblib.load("decision-tree-classifier.pkl")
 
 # 3. Index route, opens automatically on http://127.0.0.1:8000
 @app.get('/')
