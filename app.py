@@ -17,7 +17,7 @@ app = FastAPI()
 pickle_in = open("classifier.pkl","rb")
 classifier=pickle.load(pickle_in)
 
-pickle_in2 = open("classifier.pkl","rb")
+pickle_in2 = open("random_forest_model.pkl","rb")
 model_ware = pickle.load(pickle_in2)
 
 # 3. Index route, opens automatically on http://127.0.0.1:8000
