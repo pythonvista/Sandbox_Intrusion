@@ -101,7 +101,7 @@ async def predict_malware(file: UploadFile):
     columns=[]
     for c in cols.split(','):
         if(c.strip()):
-        columns.append(c.strip())
+            columns.append(c.strip())
 
     columns.append('target')
     attacks_types = {
