@@ -18,7 +18,10 @@ app = FastAPI()
 pickle_in = open("classifier.pkl","rb")
 classifier=pickle.load(pickle_in)
 
-model_ware = joblib.load("decision-tree-classifier.pkl")
+
+pickle_in2 = open("modeltree.pkl","rb")
+model_ware = pickle.load(pickle_in2)
+
 
 # 3. Index route, opens automatically on http://127.0.0.1:8000
 @app.get('/')
